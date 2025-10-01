@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTG SPIN WHEEL GAME</title>
+    <link rel="stylesheet" href="styles-game.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GCTG SPIN WHEEL GAME</h1>
+        <button id="backButton">HOME</button>
+
+        <!-- Game Area -->
+        <div id="game" class="section">
+            <div class="game-layout">
+                <!-- Wheel -->
+                <div class="wheel-container">
+                    <canvas id="wheel" width="400" height="400"></canvas>
+                    <button id="spinButton">Spin the Wheel</button>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="leaderboard">
+                    <h3>Leaderboard</h3>
+                    <ul id="leaderboardList"></ul>
+                </div>
+            </div>
+
+            <!-- Selected Player -->
+            <div id="selectedPlayer" class="selected hidden">
+                <h3>Selected Player:</h3>
+                <p id="selectedName"></p>
+            </div>
+
+            <!-- Summary -->
+            <div id="summary" class="summary hidden">
+                <h3>Game Summary</h3>
+                <ul id="summaryList"></ul>
+                <button id="restartGame">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Created by Mulwa
+        </footer>
+    </div>
+
+    <script src="script-game.js"></script>
+</body>
+</html>

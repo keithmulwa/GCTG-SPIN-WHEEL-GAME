@@ -1,0 +1,239 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #34495e, #2c3e50, #34495e);
+    margin: 0;
+    padding: 20px;
+    color: #ecf0f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background: rgba(44, 62, 80, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #e74c3c;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Game Layout */
+.game-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.wheel-container {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+#wheel {
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    height: auto;
+}
+
+#spinButton {
+    margin-top: 20px;
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#spinButton:hover {
+    background: #992d22;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(201, 44, 44, 0.4);
+}
+
+/* Leaderboard */
+.leaderboard {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(52, 73, 94, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard h3 {
+    margin-top: 0;
+    color: #ecf0f1;
+}
+
+#leaderboardList {
+    list-style: none;
+    padding: 0;
+}
+
+#leaderboardList li {
+    background: rgba(236, 240, 241, 0.9);
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+    color: #2c3e50;
+}
+
+#leaderboardList li.leader {
+    background: #f39c12;
+    font-weight: bold;
+}
+
+.add-points {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add-points:hover {
+    background: #229954;
+}
+
+/* Selected Player */
+.selected {
+    background: rgba(52, 73, 94, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    animation: fadeIn 0.5s;
+    color: #ecf0f1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Summary */
+.summary {
+    background: rgba(52, 73, 94, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    animation: slideIn 0.5s;
+    color: #ecf0f1;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#summaryList {
+    list-style: none;
+    padding: 0;
+}
+
+#summaryList li {
+    background: rgba(236, 240, 241, 0.9);
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    color: #2c3e50;
+}
+
+#restartGame {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+#restartGame:hover {
+    background: #992d22;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(201, 44, 44, 0.4);
+}
+
+#backButton {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#backButton:hover {
+    background: #992d22;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(201, 44, 44, 0.4);
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #bdc3c7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .game-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wheel-container, .leaderboard {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    #wheel {
+        width: 100%;
+        height: auto;
+    }
+}

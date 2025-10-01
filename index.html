@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTG SPIN THY WHEEL GAME</title>
+    <link rel="stylesheet" href="styles-input.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GCTG SPIN THY WHEEL GAME</h1>
+        <h2>LOCK IN!!</h2>
+
+        <!-- Setup Section -->
+        <div id="setup" class="section">
+            <div class="input-group">
+                <label for="players">Write yo Names (one per line):</label>
+                <textarea id="players" rows="5" placeholder="Player 1&#10;Player 2&#10;Player 3"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="rounds">Number of Rounds:</label>
+                <input type="number" id="rounds" min="1" value="3">
+            </div>
+            <button id="startGame" class="start-btn">Start Game</button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Created by Mulwa
+        </footer>
+    </div>
+
+    <script src="script-input.js"></script>
+</body>
+</html>
