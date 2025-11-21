@@ -3,33 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GCTG SPIN THY WHEEL GAME</title>
-    <link rel="stylesheet" href="styles-input.css">
+    <title>GCTG SPIN WHEEL GAME 🎯</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slide-up {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .animate-slide-up {
+            animation: slide-up 0.5s ease-out;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #1e293b 50%, #334155 75%, #1e293b 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation: float 15s infinite; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation: float 18s infinite; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation: float 20s infinite; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation: float 17s infinite; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation: float 19s infinite; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation: float 16s infinite; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation: float 21s infinite; animation-delay: 2s; }
+        .particle:nth-child(8) { left: 80%; animation: float 18s infinite; animation-delay: 4s; }
+        .particle:nth-child(9) { left: 90%; animation: float 22s infinite; animation-delay: 1s; }
+        .particle:nth-child(10) { left: 15%; animation: float 19s infinite; animation-delay: 3s; }
+
+        /* Pulse animation for button */
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .pulse-button {
+            animation: pulse-scale 2s ease-in-out infinite;
+        }
+
+        /* Shake animation for errors */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>GCTG SPIN THY WHEEL GAME</h1>
-        <h2>LOCK IN!!</h2>
+<body class="gradient-bg min-h-screen text-white p-4 md:p-8">
+    <!-- Floating Particles -->
+    <div class="particle" style="width: 80px; height: 80px; background: radial-gradient(circle, rgba(239, 68, 68, 0.3), transparent);"></div>
+    <div class="particle" style="width: 60px; height: 60px; background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent);"></div>
+    <div class="particle" style="width: 100px; height: 100px; background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent);"></div>
+    <div class="particle" style="width: 70px; height: 70px; background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);"></div>
+    <div class="particle" style="width: 90px; height: 90px; background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent);"></div>
+    <div class="particle" style="width: 75px; height: 75px; background: radial-gradient(circle, rgba(236, 72, 153, 0.3), transparent);"></div>
+    <div class="particle" style="width: 85px; height: 85px; background: radial-gradient(circle, rgba(20, 184, 166, 0.2), transparent);"></div>
+    <div class="particle" style="width: 65px; height: 65px; background: radial-gradient(circle, rgba(249, 115, 22, 0.3), transparent);"></div>
+    <div class="particle" style="width: 95px; height: 95px; background: radial-gradient(circle, rgba(239, 68, 68, 0.2), transparent);"></div>
+    <div class="particle" style="width: 55px; height: 55px; background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent);"></div>
 
-        <!-- Setup Section -->
-        <div id="setup" class="section">
-            <div class="input-group">
-                <label for="players">Write yo Names (one per line):</label>
-                <textarea id="players" rows="5" placeholder="Player 1&#10;Player 2&#10;Player 3"></textarea>
+    <div class="max-w-2xl mx-auto" style="position: relative; z-index: 10;">
+        <div class="glass-effect rounded-3xl p-8 md:p-12 animate-slide-up">
+            <h1 class="text-4xl md:text-6xl font-bold text-center mb-2 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                🎯 GCTG SPIN WHEEL
+            </h1>
+            <p class="text-center text-gray-300 mb-8 text-sm md:text-base">The ultimate decision maker for your group!</p>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-lg font-semibold mb-3 text-gray-200">
+                        👥 Player Names (one per line)
+                    </label>
+                    <textarea 
+                        id="players" 
+                        rows="6" 
+                        placeholder="Enter player names...&#10;Alice&#10;Bob&#10;Charlie&#10;Diana"
+                        class="w-full px-4 py-3 rounded-xl bg-slate-800 border-2 border-slate-600 focus:border-red-500 focus:ring-4 focus:ring-red-500/20 outline-none transition-all text-white placeholder-gray-400 resize-none"
+                    ></textarea>
+                    <p class="text-xs text-gray-400 mt-2">💡 Tip: Minimum 2 players required</p>
+                </div>
+                
+                <div>
+                    <label class="block text-lg font-semibold mb-3 text-gray-200">
+                        🔄 Number of Rounds
+                    </label>
+                    <input 
+                        type="number" 
+                        id="rounds" 
+                        value="3" 
+                        min="1"
+                        max="20" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-800 border-2 border-slate-600 focus:border-red-500 focus:ring-4 focus:ring-red-500/20 outline-none transition-all text-white"
+                    >
+                    <p class="text-xs text-gray-400 mt-2">🎮 Each player gets selected once per round</p>
+                </div>
+                
+                <button 
+                    id="startGame"
+                    class="pulse-button w-full py-4 px-8 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 rounded-2xl font-bold text-xl transition-all transform hover:scale-105 hover:shadow-2xl shadow-xl"
+                >
+                    🚀 START GAME
+                </button>
             </div>
-            <div class="input-group">
-                <label for="rounds">Number of Rounds:</label>
-                <input type="number" id="rounds" min="1" value="3">
-            </div>
-            <button id="startGame" class="start-btn">Start Game</button>
+            
+            <footer class="text-center mt-8 text-gray-400 text-sm flex items-center justify-center gap-2">
+                <span>Made with ❤️ by Mulwa</span>
+            </footer>
         </div>
-
-        <!-- Footer -->
-        <footer>
-            Created by Mulwa
-        </footer>
     </div>
 
-    <script src="script-input.js"></script>
+    <script>
+        const playersTextarea = document.getElementById('players');
+        const roundsInput = document.getElementById('rounds');
+        const startGameBtn = document.getElementById('startGame');
+
+        // Add enter key support for textarea
+        playersTextarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                startGameBtn.click();
+            }
+        });
+
+        // Character counter and validation
+        playersTextarea.addEventListener('input', () => {
+            const lines = playersTextarea.value.trim().split('\n').filter(name => name.trim() !== '');
+            if (lines.length >= 2) {
+                playersTextarea.classList.remove('border-red-500');
+                playersTextarea.classList.add('border-green-500');
+            } else {
+                playersTextarea.classList.remove('border-green-500');
+            }
+        });
+
+        startGameBtn.addEventListener('click', () => {
+            const playerNames = playersTextarea.value.trim().split('\n').filter(name => name.trim() !== '');
+            const roundsValue = parseInt(roundsInput.value);
+
+            // Validation with better UX
+            if (playerNames.length < 2) {
+                playersTextarea.classList.add('shake', 'border-red-500');
+                setTimeout(() => playersTextarea.classList.remove('shake'), 300);
+                
+                // Custom styled alert
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'fixed top-4 right-4 bg-red-600 text-white px-6 py-4 rounded-xl shadow-2xl z-50 animate-slide-up';
+                alertDiv.innerHTML = '🙏 <strong>Oops!</strong> You need at least 2 players!';
+                document.body.appendChild(alertDiv);
+                setTimeout(() => alertDiv.remove(), 3000);
+                return;
+            }
+
+            if (roundsValue < 1 || roundsValue > 20) {
+                roundsInput.classList.add('shake', 'border-red-500');
+                setTimeout(() => roundsInput.classList.remove('shake'), 300);
+                
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'fixed top-4 right-4 bg-orange-600 text-white px-6 py-4 rounded-xl shadow-2xl z-50 animate-slide-up';
+                alertDiv.innerHTML = '⚠️ <strong>Hey!</strong> Rounds must be between 1 and 20!';
+                document.body.appendChild(alertDiv);
+                setTimeout(() => alertDiv.remove(), 3000);
+                return;
+            }
+
+            // Loading state
+            startGameBtn.disabled = true;
+            startGameBtn.innerHTML = '🎮 Loading...';
+            
+            setTimeout(() => {
+                const playersParam = encodeURIComponent(playerNames.join(','));
+                window.location.href = `game.html?players=${playersParam}&rounds=${roundsValue}`;
+            }, 500);
+        });
+
+        // Auto-focus on page load
+        window.addEventListener('load', () => {
+            playersTextarea.focus();
+        });
+    </script>
 </body>
 </html>
